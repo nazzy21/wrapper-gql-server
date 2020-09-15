@@ -7,7 +7,7 @@ import executeFn from "./resolve-field";
 /**
  Initialize and sets server side graphql handlers.
 
- @param {array<String>} typeDefs
+ @param {array<Object>} typeDefs
  	The list of gql definitions use in the application.
  @param {array<gqlDirective>} Directives
  	The list of define directives available for use in either server and/or client side.
@@ -16,7 +16,7 @@ import executeFn from "./resolve-field";
  @returns {object}
  	Returns an instance of <GraphQLExpress> object.
 **/
-export default function GQL(typeDefs, directives = [], context = {}) {
+export function gql(typeDefs, directives = [], context = {}) {
 	// Iterate type definitions
 	const defs = [],
 		dirList = [],
