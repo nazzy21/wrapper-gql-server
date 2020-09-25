@@ -32,8 +32,10 @@ export function gql(typeDefs, directives = [], context = {}) {
 	let Schema = buildSchema(defs.shift());
 
 	if (!_.isEmpty(defs)) {
-		const _schema = parse(defs.join(""));
-		Schema = extendSchema(Schema, _schema);
+		for(const typeDef of defs) {
+			const _schema = parse(typeDef);
+			Schema = extendSchema(Schema, _schema);
+		}
 	}
 
 	return graphHttp({
